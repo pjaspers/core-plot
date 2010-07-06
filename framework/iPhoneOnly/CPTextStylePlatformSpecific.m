@@ -33,12 +33,17 @@
 {	
 	if ( style.color == nil ) return;
     
-    CGContextSaveGState(context);
+	CGContextSaveGState(context);
 	CGColorRef textColor = style.color.cgColor;
 	
 	CGContextSetStrokeColorWithColor(context, textColor);	
 	CGContextSetFillColorWithColor(context, textColor);
-	
+	if (style.shadowColor) {
+		CGContextSetShadowWithColor(context, style.shadowOffset, 1.0, style.shadowColor.cgColor);
+	}
+	//CGContextSetShadowWithColor(context, style.shadowOffset, 5.0, [UIColor blackColor].CGColor);
+
+
 	CPPushCGContext(context);	
 	
 	UIFont *theFont = [UIFont fontWithName:style.fontName size:style.fontSize];

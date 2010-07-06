@@ -22,6 +22,16 @@
  **/
 @synthesize color;
 
+/** @property shadowColor
+ *  @brief Sets the current shadow color.
+ **/
+@synthesize shadowColor;
+
+/** @property shadowOffset
+ *  @brief Sets the current shadow size.
+ **/
+@synthesize shadowOffset;
+
 #pragma mark -
 #pragma mark Initialization and teardown
 
@@ -30,6 +40,8 @@
 	if ( self = [super init] ) {
 		fontName = @"Helvetica";
 		fontSize = 12.0;
+		shadowColor = nil;
+		shadowOffset = CGSizeMake(0, -1);
 		color = [[CPColor blackColor] retain];
 	}
 	return self;
@@ -62,6 +74,8 @@
 	newCopy->fontName = [self->fontName copy];
 	newCopy->color = [self->color copy];
 	newCopy->fontSize = self->fontSize;
+	newCopy->shadowColor = [self->shadowColor copy];
+	newCopy->shadowOffset = self->shadowOffset;
 	return newCopy;
 }
 
@@ -73,6 +87,8 @@
 	[coder encodeObject:self.fontName forKey:@"fontName"];
 	[coder encodeDouble:self.fontSize forKey:@"fontSize"];
 	[coder encodeObject:self.color forKey:@"color"];
+	[coder encodeObject:self.shadowColor forKey:@"shadowColor"];
+	//[coder encodeCGSize:self.shadowOffset forKey:@"shadowOffset"];
 }
 
 -(id)initWithCoder:(NSCoder *)coder
@@ -83,6 +99,8 @@
 		self.fontName = [coder decodeObjectForKey:@"fontName"];
 		self.fontSize = [coder decodeDoubleForKey:@"fontSize"];
 		self.color = [coder decodeObjectForKey:@"color"];
+		self.shadowColor = [coder decodeObjectForKey:@"shadowColor"];
+		//self.shadowOffset = [coder decodeCGSizeForKey:@"shadowOffset"];
 	}
     return self;
 }
