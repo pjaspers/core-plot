@@ -29,7 +29,6 @@ build/*
 
 # for those crazies using svn and hg at the same time
 *.svn*
-*.gitignore
 
 # Doxygen tagfile output
 **/core-plot-tags.xml
