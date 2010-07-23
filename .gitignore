@@ -23,6 +23,12 @@ build/*
 **.mode?v?
 **.perspectivev?
 
+#xcode4
+*.xcworkspace
+xcuserdata
+project.xcworkspace/*
+xcuserdata/*
+
 # documentation
 **.docset/*
 **/debug.txt
